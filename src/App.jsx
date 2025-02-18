@@ -3,17 +3,11 @@ import { useState } from "react"
 import Game from "./Components/Game"
 import Result from './Components/Result';
 import { questions } from "./Components/Questions"
-import StartingPage from "./Components/Starting"
 
 function App() {
-  const [started, setStarted] = useState(false)
   const [step, setStep] = useState(0)
   const question = questions[step]
   const [correct, setCorrect] = useState(0)
-
-  const startHandler = () => {
-    setStarted(true)
-  }
 
   const onClickVariant = (index) => {
     setStep(step + 1)
@@ -24,8 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      {!started ? <StartingPage startHandler={startHandler}/> : <Game />}
-      {/* {
+      {
         step !== questions.length ? 
           <Game 
             questions={questions} 
@@ -38,7 +31,7 @@ function App() {
             questions={questions} 
             correct={correct}
         />
-        }   */}
+        }  
     </div>
   );
 }
